@@ -162,15 +162,30 @@ Program startowy służy wyłącznie do sprawdzenia, czy środowisko GitHub Code
 ## Wzorce wyjścia programu
 
 Poniższe fragmenty pokazują oczekiwany styl wypisywania wyników. Komentarze oznaczają miejsce, w którym należy umieścić właściwe wyrażenie arytmetyczne.
+
 ```c
-printf("[typ] add: [modyfikator_typu]\n", [operand_1] + [operand_2]);
-printf("[typ] sub: [modyfikator_typu]\n", [operand_1] - [operand_2]);
-printf("[typ] mul: [modyfikator_typu]\n", [operand_1] * [operand_2]);
-printf("[typ] div: [modyfikator_typu]\n", [operand_1] / [operand_2]);
-printf("[typ] mod: [modyfikator_typu]\n", [operand_1] % [operand_20\]);
+printf("[typ] add: [modyfikator_typu]\n", operand_1 + operand_2);
+printf("[typ] sub: [modyfikator_typu]\n", operand_1 - operand_2);
+printf("[typ] mul: [modyfikator_typu]\n", operand_1 * operand_2);
+printf("[typ] div: [modyfikator_typu]\n", operand_1 / operand_2);
+printf("[typ] mod: [modyfikator_typu]\n", operand_1% operand_2);
 ```
 
+Dla typów `float` oraz `double` należy zastosować specyfikator formatu `%.6f` zamiast `[modyfikator_typu]`. Oznacza to, że każdy wynik dla tych typów musi zostać wyświetlony z dokładnie sześcioma miejscami po przecinku.
 
+Przykład:
+
+```c
+printf("float add: %.6f\n", float_a + float_b);
+printf("double div: %.6f\n", double_a / double_b);
+```
+
+Przykładowy wynik:
+
+```text
+float add: 26.000000
+double div: 3.333333
+```
 
 ## Formaty `printf`
 
@@ -186,19 +201,13 @@ printf("[typ] mod: [modyfikator_typu]\n", [operand_1] % [operand_20\]);
 | `unsigned long` | `%lu` |
 | `long long` | `%lld` |
 | `unsigned long long` | `%llu` |
-| `float` | `%f` |
-| `double` | `%f` |
+| `float` | `%.6f` |
+| `double` | `%.6f` |
 | `sizeof(...)` | `%zu` |
 
 Wartości `char` i `short` są promowane do `int` podczas przekazywania do `printf`, dlatego w tym przypadku używany jest format `%d`.
-W przypadku `printf` wartości `float` są promowane do `double`, dlatego dla obu tych typów stosuje się format `%f`. Dla typów `float` oraz `double` należy zastosować specyfikator formatu `%.6f` zamiast `[modyfikator_typu]`. Oznacza to, że każdy wynik dla tych typów musi zostać wyświetlony z dokładnie sześcioma miejscami po przecinku.
 
-Przykład:
-
-```c
-printf("float add: %.6f\n", float_a + float_b);
-printf("double div: %.6f\n", double_a / double_b);
-```
+W przypadku `printf` wartości `float` są promowane do `double`, dlatego dla obu tych typów stosuje się format `%f` — w tym laboratorium dokładniej `%.6f`.
 
 ## Typy `unsigned`
 
@@ -212,7 +221,6 @@ value = value - 1U;
 ```
 
 Wynikiem nie będzie `-1`. Nastąpi przejście do największej wartości możliwej dla typu `unsigned int`.
-
 
 ## Debugowanie
 
@@ -232,13 +240,14 @@ Podczas debugowania warto zwrócić uwagę na:
 - różnicę pomiędzy dzieleniem całkowitym a zmiennoprzecinkowym,
 - wynik działania operatora `%`,
 - sposób reprezentacji wartości `unsigned`,
-- wartości przekazywane do `printf`.
+- wartości przekazywane do `printf`,
+- wartości zmiennych `int_a`, `char_a` oraz `float_a` dodane do panelu **WATCH**.
 
 ## Zadania
 
 1. Uruchom program startowy, który wypisuje komunikat `Hello, World!`.
 
-2. Zastąp program `Hello, World!` programem docelowym opisanym poniżej. Po zakończeniu zadania program nie powinien wypisywać komunikatu `Hello, World!`.
+2. Zastąp program `Hello, World!` programem docelowym. Po zakończeniu zadania program nie powinien wypisywać komunikatu `Hello, World!`.
 
 3. Zdefiniuj i zainicjalizuj po dwie zmienne każdego z następujących typów:
 
@@ -280,8 +289,32 @@ Podczas debugowania warto zwrócić uwagę na:
    8. `unsigned char`
 
 8. Każdy wynik wypisz w osobnej linii. Nie wypisuj dodatkowych komunikatów, nagłówków, pustych linii ani tekstu `Hello, World!`.
+
 9. Porównaj wyniki dzielenia całkowitego i zmiennoprzecinkowego:
+
+   - dla typów całkowitych wynik `20 / 6` wynosi `3`,
+   - dla typów `float` i `double` wynik `20 / 6` wynosi `3.333333`.
+
 10. Wyświetl rozmiary wszystkich użytych typów za pomocą operatora `sizeof`.
-11. Zastosuj znacznie większe lub mniejsze wartości dla typów 'char' i 'unsigned char'. Napisz z czego wynika zachowanie programu.
+
+11. Zastosuj znacznie większe lub mniejsze wartości dla typów `char` oraz `unsigned char`. Opisz, z czego wynika zachowanie programu.
+
+12. Uruchom program w trybie debugowania i użyj panelu **WATCH** w VS Code / GitHub Codespaces:
+
+   1. Ustaw breakpoint na pierwszej instrukcji `printf` dla typu `int`.
+   2. Uruchom debugowanie klawiszem `F5`.
+   3. Gdy program zatrzyma się na breakpointcie, otwórz panel **Run and Debug**.
+   4. W sekcji **WATCH** kliknij przycisk `+`.
+   5. Dodaj do obserwacji następujące zmienne:
+
+   ```c
+   int_a
+   char_a
+   float_a
+   ```
+
+   6. Wykonuj program krokowo klawiszem `F10`.
+   7. Obserwuj wartości zmiennych `int_a`, `char_a` oraz `float_a` w panelu **WATCH**.
+   8. Zrób zrzut ekranu przedstawiający zatrzymany program oraz panel **WATCH** z trzema obserwowanymi zmiennymi.
 
 _Last updated: 2026-10-04_
