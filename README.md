@@ -281,6 +281,7 @@ Podczas debugowania warto zwrócić uwagę na:
 
 8. Każdy wynik wypisz w osobnej linii. Nie wypisuj dodatkowych komunikatów, nagłówków, pustych linii ani tekstu `Hello, World!`.
 9. Porównaj wyniki dzielenia całkowitego i zmiennoprzecinkowego:
-10. Jako zadanie rozszerzające wyświetl rozmiary wszystkich użytych typów za pomocą operatora `sizeof`.
+10. Wyświetl rozmiary wszystkich użytych typów za pomocą operatora `sizeof`.
+11. Zastosuj znacznie większe lub mniejsze wartości dla typów 'char' i 'unsigned char'. Napisz z czego wynika zachowanie programu.
 
 _Last updated: 2026-10-04_
