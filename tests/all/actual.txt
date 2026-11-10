@@ -1,1 +1,46 @@
-hello, world
+char add: 26
+char sub: 14
+char mul: 120
+char div: 3
+char mod: 2
+short add: 26
+short sub: 14
+short mul: 120
+short div: 3
+short mod: 2
+int add: 26
+int sub: 14
+int mul: 120
+int div: 3
+int mod: 2
+long add: 26
+long sub: 14
+long mul: 120
+long div: 3
+long mod: 2
+long long add: 26
+long long sub: 14
+long long mul: 120
+long long div: 3
+long long mod: 2
+float add:  26.000000
+float sub:  14.000000
+float mul:  120.000000
+float div:  3.333333
+double add: 26.000000
+double sub: 14.000000
+double mul: 120.000000
+double div: 3.333333
+unsigned char add: 206
+unsigned char sub: 194
+unsigned char mul: 1200
+unsigned char div: 33
+unsigned char mod: 2
+1
+2
+4
+8
+8
+4
+8
+1

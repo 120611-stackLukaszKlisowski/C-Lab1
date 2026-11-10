@@ -15,7 +15,7 @@ int main(void) {
     float float_b = 6;
     double double_a = 20;
     double double_b = 6;
-    unsigned char uchar_a = 200;
+    unsigned char uchar_a = 20;
     unsigned char uchar_b = 6;
     
     printf("char add: %d\n", char_a + char_b);
